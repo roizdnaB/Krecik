@@ -18,4 +18,5 @@ function Hole:draw()
   love.graphics.circle("fill", self.x, self.y, self.radius)
 end
 
+--Return the Hole class
 return Hole

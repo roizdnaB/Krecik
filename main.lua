@@ -20,6 +20,7 @@ function love.load()
   Assets = require "src.assets"
   --Load entities
   Player = require "src.entities.player"
+  Mole = require "src.entities.mole"
   --Load states
   Hole = require "src.states.hole"
   Level = require "src.states.level"
@@ -31,7 +32,7 @@ function love.load()
 
   --Load the first level
   level1 = Level(holes1)
-
+  
   --Set the cursor image
   love.mouse.setCursor(love.mouse.newCursor(Assets.cursor, 0, 0))
 
@@ -39,12 +40,23 @@ end
 
 --Main drawing function of the game
 function love.draw()
+  
   --Set background color
   love.graphics.setBackgroundColor(9/255, 125/255, 31/255)
   --Draw level 1
   level1:draw()
+  
+  --Draw the moles
+  for i, m in ipairs(level1.moles) do
+    m:draw()
+  end
 end
 
 --Main updating function of the game
-function love.update()
+function love.update(dt)
+  
+  --Call the update function for every mole
+  for i, m in ipairs(level1.moles) do
+    m:update(dt)
+  end
 end
