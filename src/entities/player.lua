@@ -12,9 +12,16 @@ function Player:new(healthPoints, score)
   self.score = score
 end
 
+function Player:update()
+end  
+
 --Draw the player method
 function Player:draw()
+  love.graphics.setColor(0,0,0)
+  love.graphics.print("SCORE:  ".. self.score.."  HEALTH:".. self.healthPoints,10,12)
+  love.graphics.rectangle("line",10,10,200,30)
 end
+
 
 --Return the Player class
 return Player

@@ -12,7 +12,7 @@ function Mole:new(x, y, isAlive)
   --Determine if mole is alive or not
   self.isAlive = isAlive
   --Time required to spawn the mole (random number) 
-  self.timeToSpawn = love.math.random(100, 400)
+  self.timeToSpawn = love.math.random(100, 1000)
 end
 
 --Drawing function
@@ -21,7 +21,9 @@ function Mole:draw()
   --If the mole is alive, draw it
   if self.isAlive == true then
       love.graphics.setColor(1, 0, 0)
-      love.graphics.circle("fill", self.x, self.y, 15)
+      love.graphics.circle("fill", self.x, self.y, 35)
+      
+  
   end
 end
 
@@ -30,7 +32,7 @@ function Mole:update(dt)
   
   --If the mole isn't alive, then decrease time required to spawn 
   if self.isAlive == false then
-    self.timeToSpawn = self.timeToSpawn - 1
+    self.timeToSpawn = self.timeToSpawn-1
   end
   
   --If time required to spawn is less or equal to 0, then the mole is alive
@@ -38,6 +40,23 @@ function Mole:update(dt)
     self.isAlive = true
   end
 end
+
+function Check(x,y,Player)
+  
+  --Player.score itp
+  --Player.healthPoints 
+  
+  -- Najpierw sprawdzmay czy myszka jest w zasięgu kreta
+  --jeżeli nie jest to nic
+  --jeżeli jest to sprawdzamy czy kret jest żywy
+  --jeśli nie jest żywy i to odejmujemy punkt
+  --jeżeli jest żywy to dodajemy punkt i ładujemy nowy timeToSpawn
+  
+  
+ end 
+
+
+
 
 --Return the Mole class
 return Mole
