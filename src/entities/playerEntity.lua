@@ -1,10 +1,10 @@
---File: player.lua
+--File: playerEntity.lua
 
 --Create a player class
-local Player = Object:extend()
+local PlayerEntity = Object:extend()
 
 --Constructor of the player class
-function Player:new(healthPoints, score)
+function PlayerEntity:new(healthPoints, score)
   
   --Health points (the number of the possible misses)
   self.healthPoints = healthPoints
@@ -12,11 +12,11 @@ function Player:new(healthPoints, score)
   self.score = score
 end
 
-function Player:update()
+function PlayerEntity:update()
 end  
 
 --Draw the player method
-function Player:draw()
+function PlayerEntity:draw()
   if self.healthPoints==0 then
     love.graphics.setColor(0,0,0)
     love.graphics.print("GAME OVER",10,12)
@@ -34,4 +34,4 @@ end
 
 
 --Return the Player class
-return Player
+return PlayerEntity

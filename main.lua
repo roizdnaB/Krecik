@@ -6,10 +6,14 @@ Object = require "lib.classic"  --Classic lib for simulating OOP
 
 --Init empty list of assets, entities, states and systems
 local Assets = nil
-local Player = nil
-local Level = nil
-local Mole = nil
-local Hole = nil
+
+local MoleEntity = nil
+local PlayerEntity = nil
+
+local HoleState = nil
+local LevelState = nil
+
+--systems
 
 local level1 = nil
 
@@ -21,11 +25,11 @@ function love.load()
   --Load assets
   Assets = require "src.assets"
   --Load entities
-  Player = require "src.entities.player"
-  Mole = require "src.entities.mole"
+  Mole = require "src.entities.moleEntity"
+  Player = require "src.entities.playerEntity"
   --Load states
-  Hole = require "src.states.hole"
-  Level = require "src.states.level"
+  Hole = require "src.states.holeState"
+  Level = require "src.states.levelState"
   
   d=0
 
