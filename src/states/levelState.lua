@@ -30,7 +30,7 @@ function LevelState:draw()
   --Else, draw the timer
   else
     love.graphics.setColor(0,0,0)
-    love.graphics.print("time: "..self.timeOfLevel,405,12)
+    love.graphics.print("time: " .. math.floor(self.timeOfLevel + 0.5), 405, 12)
     love.graphics.rectangle("line",400,10,180,30)
   end
   
