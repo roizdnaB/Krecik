@@ -53,15 +53,17 @@ function love.draw()
   
   player:draw()
   
-  if player.healthPoints > 0 and player.score<20 then
+  
     --Draw level 1
     level1:draw()
+    if player.healthPoints > 0 and player.score<20 and level1.timeLevel > 0 then
     
     --Draw the moles
-    for i, m in ipairs(level1.moles) do
-      m:draw()
+      for i, m in ipairs(level1.moles) do
+        m:draw()
+      end
     end
-  end
+  
 end
 
 --Main updating function of the game
@@ -71,11 +73,13 @@ function love.update(dt)
   for i, m in ipairs(level1.moles) do
     m:update(dt)
   end
+  
+  level1:update(dt)
 end
 
 --Mouse click, updating score and healthpoins for plyer
 function love.mousepressed(x,y,button)
-  if player.healthPoints > 0 and player.score<20 then
+  if player.healthPoints > 0 and player.score<20 and level1.timeLevel > 0 then
    if button==1 then
      for i, m in ipairs(level1.moles) do
       d=math.sqrt((x-m.x)*(x-m.x)+(y-m.y)*(y-m.y))
