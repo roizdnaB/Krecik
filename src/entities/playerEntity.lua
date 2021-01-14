@@ -15,12 +15,12 @@ end
 --Draw the player GUI method
 function PlayerEntity:drawGUI()
   --If the player has no health, print the game over message
-  if self.healthPoints==0 then
+  if self.healthPoints <= 0 then
     love.graphics.setColor(0,0,0)
     love.graphics.print("GAME OVER",10,12)
     love.graphics.rectangle("line",10,10,200,30)
   --If the player has 20 score, print the congratulation message
-  elseif self.score==20 then
+  elseif self.score >= 20 then
     love.graphics.setColor(0,0,0)
     love.graphics.print("CONGRATULATION! YOU WIN",10,12)
     love.graphics.rectangle("line",10,10,200,30)

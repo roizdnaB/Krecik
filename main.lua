@@ -80,12 +80,14 @@ end
 
 --Main updating function of the game
 function love.update(dt)
-  --Update the entities and states
-  levelSystem:updateEntity(level1, dt)
-  playerSystem:updateEntity(player, dt)
+  if levelSystem:isGameRunning(level1, player) then
+    --Update the entities and states
+    levelSystem:updateEntity(level1, dt)
+    playerSystem:updateEntity(player, dt)
   
-  for i, m in ipairs(level1.moles) do
-    moleSystem:updateEntity(m, dt)
+    for i, m in ipairs(level1.moles) do
+      moleSystem:updateEntity(m, player, dt)
+    end
   end
 end
 

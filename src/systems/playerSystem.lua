@@ -21,7 +21,6 @@ function PlayerSystem:killMole(entity, x, y, moles)
       if m.isAlive == true then
         entity.score = entity.score + 1
         m.isAlive = false
-        m.timeToSpawn = love.math.random(100, 1000)
       --If the player clicked in the hole without the mole
       else
         entity.healthPoints = entity.healthPoints - 1
