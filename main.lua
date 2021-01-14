@@ -50,14 +50,17 @@ function love.draw()
   
   --Set background color
   love.graphics.setBackgroundColor(9/255, 125/255, 31/255)
-  --Draw level 1
-  level1:draw()
   
   player:draw()
   
-  --Draw the moles
-  for i, m in ipairs(level1.moles) do
-    m:draw()
+  if player.healthPoints > 0 and player.score<20 then
+    --Draw level 1
+    level1:draw()
+    
+    --Draw the moles
+    for i, m in ipairs(level1.moles) do
+      m:draw()
+    end
   end
 end
 
@@ -72,20 +75,22 @@ end
 
 --Mouse click, updating score and healthpoins for plyer
 function love.mousepressed(x,y,button)
- if button==1 then
-   for i, m in ipairs(level1.moles) do
-    d=math.sqrt((x-m.x)*(x-m.x)+(y-m.y)*(y-m.y))
-    hol = Hole(m.x,m.y)
-    if d <= (hol.radius-15) then 
-      if m.isAlive==true then
-        player.score = player.score + 1
-        m.isAlive = false
-        m.timeToSpawn = love.math.random(100, 1000)
-      else
-         player.healthPoints = player.healthPoints - 1
+  if player.healthPoints > 0 and player.score<20 then
+   if button==1 then
+     for i, m in ipairs(level1.moles) do
+      d=math.sqrt((x-m.x)*(x-m.x)+(y-m.y)*(y-m.y))
+      hol = Hole(m.x,m.y)
+      if d <= (hol.radius-15) then 
+        if m.isAlive==true then
+          player.score = player.score + 1
+          m.isAlive = false
+          m.timeToSpawn = love.math.random(100, 1000)
+        else
+           player.healthPoints = player.healthPoints - 1
+        end
       end
+     end
     end
-   end
   end
 end  
 

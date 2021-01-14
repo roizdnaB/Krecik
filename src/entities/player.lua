@@ -17,9 +17,19 @@ end
 
 --Draw the player method
 function Player:draw()
-  love.graphics.setColor(0,0,0)
-  love.graphics.print("SCORE:  ".. self.score.."  HEALTH:".. self.healthPoints,10,12)
-  love.graphics.rectangle("line",10,10,200,30)
+  if self.healthPoints==0 then
+    love.graphics.setColor(0,0,0)
+    love.graphics.print("GAME OVER",10,12)
+    love.graphics.rectangle("line",10,10,200,30)
+  elseif self.score==20 then
+    love.graphics.setColor(0,0,0)
+    love.graphics.print("CONGRATULATION! YOU WIN",10,12)
+    love.graphics.rectangle("line",10,10,200,30)
+  else 
+    love.graphics.setColor(0,0,0)
+    love.graphics.print("SCORE:  ".. self.score.."  HEALTH:".. self.healthPoints,10,12)
+    love.graphics.rectangle("line",10,10,200,30)
+  end
 end
 
 
