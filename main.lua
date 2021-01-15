@@ -21,6 +21,7 @@ local HoleSystem = nil
 local currentLevel = nil
 local level1 = nil
 local level2 = nil
+local level3 = nil
 
 local currentPlayer = nil
 
@@ -54,14 +55,21 @@ function love.load()
   holes2 = {HoleState(133, 133, true, "right", 50),
             HoleState(299, 299, true, "left", 150),
             HoleState(133, 465), HoleState(299, 465), HoleState(465, 465)}
+          
+  --Map the third level
+  holes3 = {HoleState(133, 133, true, "down", 50),
+            HoleState(299, 299, true, "right", 150),
+            HoleState(133, 465), HoleState(299, 465), HoleState(465, 465, true, "up", 200)}
   
   --Create the levels
   level1 = LevelState(holes1, 60, 9/255, 125/255, 31/255)
   level2 = LevelState(holes2, 45, 140/255, 131/255, 187/255)
+  level3 = LevelState(holes3, 30, 105/255, 44/255, 117/255)
   
   --Create the player
   player1 = PlayerEntity(10,0)
   player2 = PlayerEntity(5, 0)
+  player3 = PlayerEntity(3, 0)
   
   --Create the systems
   moleSystem = MoleSystem()
@@ -111,6 +119,9 @@ function love.update(dt)
     elseif menu.currentLevel == 2 then
       currentLevel = level2
       currentPlayer = player2
+    elseif menu.currentLevel == 3 then
+      currentLevel = level3
+      currentPlayer = player3
     end
     
   elseif menu.gameState == "GAME" then
