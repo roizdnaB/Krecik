@@ -11,6 +11,7 @@ local PlayerEntity = nil
 
 local HoleState = nil
 local LevelState = nil
+local MenuState = nil
 
 local LevelSystem = nil
 local MoleSystem = nil
@@ -29,18 +30,26 @@ function love.load()
   --Load states
   HoleState = require "src.states.holeState"
   LevelState = require "src.states.levelState"
+  MenuState = require "src.states.menuState"
   --Load systems
   LevelSystem = require "src.systems.levelSystem"
   MoleSystem = require "src.systems.moleSystem"
   PlayerSystem = require "src.systems.playerSystem"
-
+  
+  --Create the menu
+  menu = MenuState()
+  
   --Map the first level
   holes1 = {HoleState(133, 133), HoleState(299, 133), HoleState(465, 133), 
             HoleState(133, 299), HoleState(299, 299), HoleState(465, 299), 
             HoleState(133, 465), HoleState(299, 465), HoleState(465, 465)}
 
+  --TODO: Map the second level
+  
   --Create the first level
   level1 = LevelState(holes1, 60)
+  
+  --TODO: Create the second level
   
   --Create the player
   player = PlayerEntity(10,0)
@@ -57,25 +66,29 @@ end
 
 --Main drawing function of the game
 function love.draw()
+  --If the game is in the "MENU" state
+  if menu.gameState == "MENU" then
+    --Draw the menu UI
+    menu:draw()
+  --If the game is in the "GAME" state
+  elseif menu.gameState == "GAME" then
+    --Set background color
+    love.graphics.setBackgroundColor(9/255, 125/255, 31/255)
   
-  --Set background color
-  love.graphics.setBackgroundColor(9/255, 125/255, 31/255)
+    --Draw the player gui
+    player:drawGUI()
   
-  --Draw the player gui
-  player:drawGUI()
+    --Draw level 1
+    level1:draw()
   
-  
-  --Draw level 1
-  level1:draw()
-  
-  --If the game is on, draw the moles
-  if levelSystem:isGameRunning(level1, player) then
-    --Draw the moles
-    for i, m in ipairs(level1.moles) do
-      m:draw()
+    --If the game is on, draw the moles
+    if levelSystem:isGameRunning(level1, player) then
+      --Draw the moles
+      for i, m in ipairs(level1.moles) do
+        m:draw()
+      end
     end
   end
-  
 end
 
 --Main updating function of the game
