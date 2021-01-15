@@ -12,6 +12,8 @@ function holeState:new(x, y, dynamic)
   self.radius = 50
   --Determine if the hole is dynamic or static
   self.dynamic = dynamic or false
+  --Set the velocity of hole
+  self.velocity = 70
 end
 
 function holeState:draw()

@@ -7,7 +7,7 @@ local MoleEntity = require "src.entities.moleEntity"
 local LevelState = Object:extend()
 
 --Constructor of the level class
-function LevelState:new(holes, time)
+function LevelState:new(holes, time, backgroundR, backgroundG, backgroundB)
     --An array of the holes
     self.holes = holes
     --A time for one level
@@ -17,13 +17,18 @@ function LevelState:new(holes, time)
     for i=1, table.getn(self.holes) do
       table.insert(self.moles, MoleEntity(self.holes[i].x, self.holes[i].y, false))
     end
+    
+    --Set the color of the background
+    self.backgroundR = backgroundR
+    self.backgroundG = backgroundG
+    self.backgroundB = backgroundB
 end
 
 --Drawing function
 function LevelState:draw()
   
   --Set background color
-  love.graphics.setBackgroundColor(9/255, 125/255, 31/255)
+  love.graphics.setBackgroundColor(self.backgroundR, self.backgroundG, self.backgroundB)
   
   --If the times up, draw the info about it
   if self.timeOfLevel <= 0 then

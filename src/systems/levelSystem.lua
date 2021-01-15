@@ -9,6 +9,15 @@ function LevelSystem:updateEntity(entity, dt)
   if entity.timeOfLevel > 0 then
     entity.timeOfLevel = (entity.timeOfLevel - 1 * dt)
   end
+  
+  
+  --If the level is dynamic, update the position of the moles
+
+  
+  for i, m in ipairs(entity.moles) do
+    m.x = entity.holes[i].x
+    m.y = entity.holes[i].y
+  end
 end
 
 --Check if the game is still running

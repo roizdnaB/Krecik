@@ -16,6 +16,7 @@ local MenuState = nil
 local LevelSystem = nil
 local MoleSystem = nil
 local PlayerSystem = nil
+local HoleSystem = nil
 
 local currentLevel = nil
 local level1 = nil
@@ -39,6 +40,7 @@ function love.load()
   LevelSystem = require "src.systems.levelSystem"
   MoleSystem = require "src.systems.moleSystem"
   PlayerSystem = require "src.systems.playerSystem"
+  HoleSystem = require "src.systems.holeSystem"
   
   --Create the menu
   menu = MenuState()
@@ -54,8 +56,8 @@ function love.load()
             HoleState(465, 465, true)}
   
   --Create the levels
-  level1 = LevelState(holes1, 45)
-  level2 = LevelState(holes2, 30)
+  level1 = LevelState(holes1, 45, 9/255, 125/255, 31/255)
+  level2 = LevelState(holes2, 30, 140/255, 131/255, 187/255)
   
   --Create the player
   player1 = PlayerEntity(10,0)
@@ -65,6 +67,7 @@ function love.load()
   moleSystem = MoleSystem()
   playerSystem = PlayerSystem()
   levelSystem = LevelSystem()
+  holeSystem = HoleSystem()
   
   --Set the cursor image
   love.mouse.setCursor(love.mouse.newCursor(Assets.cursor, 0, 0))
@@ -118,6 +121,10 @@ function love.update(dt)
   
       for i, m in ipairs(currentLevel.moles) do
         moleSystem:updateEntity(m, currentPlayer, dt)
+      end
+      
+      for i, h in ipairs(currentLevel.holes) do
+        holeSystem:updateEntity(h, dt)
       end
       
       --Mouse click, updating score and healthpoins for plyer
