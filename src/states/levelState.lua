@@ -22,6 +22,9 @@ end
 --Drawing function
 function LevelState:draw()
   
+  --Set background color
+  love.graphics.setBackgroundColor(9/255, 125/255, 31/255)
+  
   --If the times up, draw the info about it
   if self.timeOfLevel <= 0 then
     love.graphics.setColor(0, 0, 0)

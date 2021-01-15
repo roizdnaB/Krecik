@@ -18,6 +18,7 @@ local MoleSystem = nil
 local PlayerSystem = nil
 
 local level1 = nil
+local level2 = nil
 
 --Main loading function of the game
 function love.load()
@@ -74,15 +75,17 @@ function love.draw()
     menu:draw()
   --If the game is in the "GAME" state
   elseif menu.gameState == "GAME" then
-    --Set background color
-    love.graphics.setBackgroundColor(9/255, 125/255, 31/255)
   
     --Draw the player gui
     player:drawGUI()
-  
-    --Draw level 1
-    level1:draw()
-  
+    
+    if menu.currentLevel == 1 then
+      --Draw level 1
+      level1:draw()
+    elseif menu.currentLevel == 2 then
+      --TODO: draw level2
+    end
+    
     --If the game is on, draw the moles
     if levelSystem:isGameRunning(level1, player) then
       --Draw the moles
