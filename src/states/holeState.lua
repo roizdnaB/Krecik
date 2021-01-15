@@ -4,7 +4,7 @@
 local holeState = Object:extend()
 
 --Constructor of the player class
-function holeState:new(x, y, dynamic)
+function holeState:new(x, y, dynamic, direction, velocity)
   --Coords of the hole
   self.x = x
   self.y = y
@@ -12,8 +12,14 @@ function holeState:new(x, y, dynamic)
   self.radius = 50
   --Determine if the hole is dynamic or static
   self.dynamic = dynamic or false
+  --Set the direction of the movement
+  self.direction = direction or nil
   --Set the velocity of hole
-  self.velocity = 70
+  self.velocity = velocity or nil
+  
+  --Set starting coords (for path)
+  self.startX = self.x
+  self.startY = self.y
 end
 
 function holeState:draw()

@@ -51,13 +51,13 @@ function love.load()
             HoleState(133, 465), HoleState(299, 465), HoleState(465, 465)}
 
   --Map the second level
-  holes2 = {HoleState(133, 133, true),
-            HoleState(299, 299, true),
-            HoleState(465, 465, true)}
+  holes2 = {HoleState(133, 133, true, "right", 50),
+            HoleState(299, 299, true, "left", 150),
+            HoleState(133, 465), HoleState(299, 465), HoleState(465, 465)}
   
   --Create the levels
-  level1 = LevelState(holes1, 45, 9/255, 125/255, 31/255)
-  level2 = LevelState(holes2, 30, 140/255, 131/255, 187/255)
+  level1 = LevelState(holes1, 60, 9/255, 125/255, 31/255)
+  level2 = LevelState(holes2, 45, 140/255, 131/255, 187/255)
   
   --Create the player
   player1 = PlayerEntity(10,0)

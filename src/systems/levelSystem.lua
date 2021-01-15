@@ -10,10 +10,7 @@ function LevelSystem:updateEntity(entity, dt)
     entity.timeOfLevel = (entity.timeOfLevel - 1 * dt)
   end
   
-  
   --If the level is dynamic, update the position of the moles
-
-  
   for i, m in ipairs(entity.moles) do
     m.x = entity.holes[i].x
     m.y = entity.holes[i].y

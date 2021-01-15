@@ -11,10 +11,10 @@ function MoleEntity:new(x, y, isAlive)
   self.y = y
   --Determine if mole is alive or not
   self.isAlive = isAlive
-  --Time required to spawn the mole (random number) 
-  self.timeToSpawn = love.math.random(2, 10)
+  --Time required to spawn the mole (random real number between 2 and 6) 
+  self.timeToSpawn = 2 + love.math.random() * (6 - 2)
   --Time required to despawn the mole
-  self.timeToDespawn = love.math.random(3, 6)
+  self.timeToDespawn = 2 + love.math.random() * (6 - 2)
 end
 
 --Drawing function
