@@ -25,7 +25,32 @@ function MenuState:draw()
   for i=1, #self.menus[self.currentMenu] do
     love.graphics.print(self.menus[self.currentMenu][i], 10, 10+ 20*i)
   end
+end
+
+--Updating function
+function MenuState:update()
   
+  function love.keyreleased(key)
+    if key == "up" then
+      self.currentItem = self.currentItem - 1
+      if self.currentItem < 1 then
+        self.currentItem = #self.menus[self.currentItem]
+      end
+    elseif key == "down" then
+      self.currentItem = self.currentItem + 1
+      if self.currentItem > #self.menus[self.currentItem] then
+        self.currentItem = 1
+      end
+    end
+  end
+  
+  if self.currentMenu == 1 then
+    if self.currentItem == 1 then
+      
+    elseif self.currentItem == 2 then
+      self.gameState = "GAME"
+    end
+  end
 end
 
 return MenuState

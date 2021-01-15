@@ -38,6 +38,8 @@ function love.load()
   
   --Create the menu
   menu = MenuState()
+  --For debbug
+  --menu.gameState = "GAME"
   
   --Map the first level
   holes1 = {HoleState(133, 133), HoleState(299, 133), HoleState(465, 133), 
@@ -93,20 +95,22 @@ end
 
 --Main updating function of the game
 function love.update(dt)
-  if levelSystem:isGameRunning(level1, player) then
-    --Update the entities and states
-    levelSystem:updateEntity(level1, dt)
-    playerSystem:updateEntity(player, dt)
+  if menu.gameState == "MENU" then
+    menu:update()
+  elseif menu.gameState == "GAME" then
+    if levelSystem:isGameRunning(level1, player) then
+      --Update the entities and states
+      levelSystem:updateEntity(level1, dt)
+      playerSystem:updateEntity(player, dt)
   
-    for i, m in ipairs(level1.moles) do
-      moleSystem:updateEntity(m, player, dt)
+      for i, m in ipairs(level1.moles) do
+        moleSystem:updateEntity(m, player, dt)
+      end
+      
+      --Mouse click, updating score and healthpoins for plyer
+      function love.mousepressed(x,y,button)
+        playerSystem:killMole(player, x, y, level1.moles)
+      end  
     end
   end
 end
-
---Mouse click, updating score and healthpoins for plyer
-function love.mousepressed(x,y,button)
-    if levelSystem:isGameRunning(level1, player) then
-      playerSystem:killMole(player, x, y, level1.moles)
-    end
-end  
