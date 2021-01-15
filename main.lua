@@ -17,8 +17,11 @@ local LevelSystem = nil
 local MoleSystem = nil
 local PlayerSystem = nil
 
+local currentLevel = nil
 local level1 = nil
 local level2 = nil
+
+local currentPlayer = nil
 
 --Main loading function of the game
 function love.load()
@@ -39,23 +42,24 @@ function love.load()
   
   --Create the menu
   menu = MenuState()
-  --For debbug
-  --menu.gameState = "GAME"
   
   --Map the first level
   holes1 = {HoleState(133, 133), HoleState(299, 133), HoleState(465, 133), 
             HoleState(133, 299), HoleState(299, 299), HoleState(465, 299), 
             HoleState(133, 465), HoleState(299, 465), HoleState(465, 465)}
 
-  --TODO: Map the second level
+  --Map the second level
+  holes2 = {HoleState(133, 133, true),
+            HoleState(299, 299, true),
+            HoleState(465, 465, true)}
   
-  --Create the first level
-  level1 = LevelState(holes1, 60)
-  
-  --TODO: Create the second level
+  --Create the levels
+  level1 = LevelState(holes1, 45)
+  level2 = LevelState(holes2, 30)
   
   --Create the player
-  player = PlayerEntity(10,0)
+  player1 = PlayerEntity(10,0)
+  player2 = PlayerEntity(5, 0)
   
   --Create the systems
   moleSystem = MoleSystem()
@@ -77,19 +81,15 @@ function love.draw()
   elseif menu.gameState == "GAME" then
   
     --Draw the player gui
-    player:drawGUI()
+    currentPlayer:drawGUI()
     
-    if menu.currentLevel == 1 then
-      --Draw level 1
-      level1:draw()
-    elseif menu.currentLevel == 2 then
-      --TODO: draw level2
-    end
+    --Draw the level
+    currentLevel:draw()
     
     --If the game is on, draw the moles
-    if levelSystem:isGameRunning(level1, player) then
+    if levelSystem:isGameRunning(currentLevel, currentPlayer) then
       --Draw the moles
-      for i, m in ipairs(level1.moles) do
+      for i, m in ipairs(currentLevel.moles) do
         m:draw()
       end
     end
@@ -100,19 +100,29 @@ end
 function love.update(dt)
   if menu.gameState == "MENU" then
     menu:update()
+    
+    --Set the current level
+    if menu.currentLevel == 1 then
+      currentLevel = level1
+      currentPlayer = player1
+    elseif menu.currentLevel == 2 then
+      currentLevel = level2
+      currentPlayer = player2
+    end
+    
   elseif menu.gameState == "GAME" then
-    if levelSystem:isGameRunning(level1, player) then
+    if levelSystem:isGameRunning(currentLevel, currentPlayer) then
       --Update the entities and states
-      levelSystem:updateEntity(level1, dt)
-      playerSystem:updateEntity(player, dt)
+      levelSystem:updateEntity(currentLevel, dt)
+      playerSystem:updateEntity(currentPlayer, dt)
   
-      for i, m in ipairs(level1.moles) do
-        moleSystem:updateEntity(m, player, dt)
+      for i, m in ipairs(currentLevel.moles) do
+        moleSystem:updateEntity(m, currentPlayer, dt)
       end
       
       --Mouse click, updating score and healthpoins for plyer
       function love.mousepressed(x,y,button)
-        playerSystem:killMole(player, x, y, level1.moles)
+        playerSystem:killMole(currentPlayer, x, y, currentLevel.moles)
       end  
     end
   end

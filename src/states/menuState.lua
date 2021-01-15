@@ -11,7 +11,7 @@ function MenuState:new()
     --Determine if the game is on ("GAME") or in the menu "MENU"
     self.gameState = "MENU"
     
-    --Array which is the map of the menu buttons
+    --Array which is the map of the menu buttons (see helpers -> button)
     self.menus = 
       {Button("START", 10, 30, 1, 1, 50, 30), Button("EXIT", 10, 100, 1, 2, 50, 30), 
        Button("LEVEL 1", 10, 30, 2, 1, 50, 30), Button("LEVEL 2", 10, 100, 2, 2, 50, 30), Button("BACK", 10, 170, 2, 3, 50, 30)}
