@@ -20,8 +20,13 @@ end
 
 --Drawing function
 function Button:draw()
-  love.graphics.print(self.label, self.x, self.y)
+  love.graphics.setColor(43/255, 92/255, 130/255)
+  love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  love.graphics.setColor(141/255,200/255,245/255)
   love.graphics.rectangle("line", self.x, self.y, self.width, self.height)
+  love.graphics.setColor(255,255,255)
+  love.graphics.print(self.label, self.x, self.y)
+  
 end
 
 --Updating function

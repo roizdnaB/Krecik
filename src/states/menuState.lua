@@ -12,9 +12,10 @@ function MenuState:new()
     self.gameState = "MENU"
     
     --Array which is the map of the menu buttons (see helpers -> button)
+    
     self.menus = 
-      {Button("START", 10, 30, 1, 1, 50, 30), Button("EXIT", 10, 100, 1, 2, 50, 30), 
-       Button("LEVEL 1", 10, 30, 2, 1, 50, 30), Button("LEVEL 2", 10, 100, 2, 2, 50, 30), Button("LEVEL 3", 10, 170, 2, 3, 50, 30), Button("BACK", 10, 240, 2, 4, 50, 30)}
+      {Button("START", 150, 150, 1, 1, 300, 50), Button("EXIT", 150, 220, 1, 2, 300, 50), 
+       Button("LEVEL 1", 150, 150, 2, 1, 300, 50), Button("LEVEL 2", 150, 220, 2, 2, 300, 50), Button("LEVEL 3", 150, 290, 2, 3, 300, 50), Button("BACK", 150, 360, 2, 4, 300, 50)}
     
     --Set the current section and item
     self.currentSection = 1
