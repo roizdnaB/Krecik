@@ -3,6 +3,9 @@
 --Create a level class
 local holeState = Object:extend()
 
+--Load assets
+local Assets = require "src.assets"
+
 --Constructor of the player class
 function holeState:new(x, y, dynamic, direction, velocity)
   --Coords of the hole
@@ -17,9 +20,8 @@ function holeState:new(x, y, dynamic, direction, velocity)
   --Set the velocity of hole
   self.velocity = velocity or nil
   
-  --Set starting coords (for path)
-  self.startX = self.x
-  self.startY = self.y
+  --Set the graphic
+  self.representation = x
 end
 
 function holeState:draw()

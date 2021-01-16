@@ -3,6 +3,9 @@
 --Create a mole class
 local MoleEntity = Object:extend()
 
+--Load assets
+local Assets = require "src.assets"
+
 --Constructor of the mole class
 function MoleEntity:new(x, y, isAlive)
   
@@ -15,6 +18,8 @@ function MoleEntity:new(x, y, isAlive)
   self.timeToSpawn = 2 + love.math.random() * (6 - 2)
   --Time required to despawn the mole
   self.timeToDespawn = 2 + love.math.random() * (6 - 2)
+  
+  self.animation = newAnimation(Assets.mole, 16, 18, 1)
 end
 
 --Drawing function
