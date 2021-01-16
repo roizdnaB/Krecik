@@ -57,9 +57,9 @@ function love.load()
             HoleState(133, 465), HoleState(299, 465), HoleState(465, 465)}
           
   --Map the third level
-  holes3 = {HoleState(133, 133, true, "down", 50),
-            HoleState(299, 299, true, "right", 150),
-            HoleState(133, 465), HoleState(299, 465), HoleState(465, 465, true, "up", 200)}
+  holes3 = {HoleState(133, 133, true, "down", 100),
+            HoleState(299, 299, true, "up", 175),
+            HoleState(465, 465, true, "down", 250)}
   
   --Create the levels
   level1 = LevelState(holes1, 60, 9/255, 125/255, 31/255)
