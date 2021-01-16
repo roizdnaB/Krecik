@@ -23,6 +23,8 @@ function MoleEntity:draw()
   if self.isAlive == true then
       love.graphics.setColor(1, 0, 0)
       love.graphics.circle("fill", self.x, self.y, 35)
+      
+      
   end
 end
 

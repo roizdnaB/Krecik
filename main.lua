@@ -62,7 +62,7 @@ function love.load()
             HoleState(465, 465, true, "down", 250)}
   
   --Create the levels
-  level1 = LevelState(holes1, 60, 9/255, 125/255, 31/255)
+  level1 = LevelState(holes1, 60, Assets.grass)
   level2 = LevelState(holes2, 45, 140/255, 131/255, 187/255)
   level3 = LevelState(holes3, 30, 105/255, 44/255, 117/255)
   
@@ -90,12 +90,12 @@ function love.draw()
     menu:draw()
   --If the game is in the "GAME" state
   elseif menu.gameState == "GAME" then
-  
-    --Draw the player gui
-    currentPlayer:drawGUI()
     
     --Draw the level
     currentLevel:draw()
+    
+    --Draw the player gui
+    currentPlayer:drawGUI()
     
     --If the game is on, draw the moles
     if levelSystem:isGameRunning(currentLevel, currentPlayer) then
