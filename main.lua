@@ -44,7 +44,7 @@ function love.load()
   HoleSystem = require "src.systems.holeSystem"
   
   --Create the menu
-  menu = MenuState()
+  menu = MenuState(Assets.menuBackground, Assets.moleMenu)
   
   --Map the first level
   holes1 = {HoleState(133, 133), HoleState(299, 133), HoleState(465, 133), 
