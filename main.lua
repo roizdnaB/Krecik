@@ -67,7 +67,7 @@ function love.load()
   level3 = LevelState(holes3, 30, Assets.grass)
   
   --Create the player
-  player1 = PlayerEntity(10,0)
+  player1 = PlayerEntity(99,0)
   player2 = PlayerEntity(5, 0)
   player3 = PlayerEntity(3, 0)
   
