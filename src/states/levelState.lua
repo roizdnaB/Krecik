@@ -34,19 +34,18 @@ function LevelState:draw()
   
   --If the times up, draw the info about it
   if self.timeOfLevel <= 0 then
-    love.graphics.setColor(0, 0, 0)
     love.graphics.print("times up! Game Over", 405, 12)
     love.graphics.rectangle("line", 400, 10, 180, 30)
   --Else, draw the timer
   else
-    love.graphics.setColor(0,0,0)
+    
     love.graphics.print("time: " .. math.floor(self.timeOfLevel + 0.5), 405, 12)
     love.graphics.rectangle("line",400,10,180,30)
   end
   
   --Draw all holes on the screen
   for i=1,table.getn(self.holes) do
-    self.holes[i]:draw()
+    --self.holes[i]:draw()
   end
 end
 
