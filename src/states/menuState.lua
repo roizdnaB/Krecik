@@ -7,7 +7,7 @@ local Button = require "src.helpers.button"
 local MenuState = Object:extend()
 
 --Constructor of the level class
-function MenuState:new()
+function MenuState:new(background,mole)
     --Determine if the game is on ("GAME") or in the menu "MENU"
     self.gameState = "MENU"
     
@@ -23,12 +23,23 @@ function MenuState:new()
     
     --Set the current level
     self.currentLevel = nil
+    
+    self.background=background
+    self.mole=mole
+    
 end
 
 --Drawing function
 function MenuState:draw()
   --Set background color
-  love.graphics.setBackgroundColor(0, 0, 0)
+
+   for i = 0, love.graphics.getWidth() / self.background:getWidth() do
+        for j = 0, love.graphics.getHeight() / self.background:getHeight() do
+            love.graphics.draw(self.background, i * self.background:getWidth(), j * self.background:getHeight())
+        end
+    end
+    love.graphics.print("MENU",290,50)
+    love.graphics.draw(self.mole,300,350)
   --Draw the current menu
   for i, b in ipairs(self.menus) do
     if self.currentSection == b.section then
