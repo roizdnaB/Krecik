@@ -15,7 +15,7 @@ function MoleSystem:updateEntity(entity, player, dt)
   --If time required to spawn is less or equal to 0, then the mole is alive
   if entity.timeToSpawn <= 0 then
     entity.isAlive = true
-    entity.timeToSpawn = love.math.random(2, 10)
+    entity.timeToSpawn = 2 + love.math.random() * (6 - 2)
   end
   
   --If mole is alive, decrease the time of presence
@@ -34,7 +34,7 @@ function MoleSystem:updateEntity(entity, player, dt)
     entity.isAlive = false
     entity.animation.animationEnd = false
     entity.animation.currentTime = 0
-    entity.timeToDespawn = love.math.random(3, 6)
+    entity.timeToDespawn = 2 + love.math.random() * (6 - 2)
     player.healthPoints = player.healthPoints - 1
   end
 end

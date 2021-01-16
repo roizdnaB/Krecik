@@ -27,7 +27,7 @@ end
 function holeState:draw()
   --Draw the hole
   love.graphics.setColor(150/255, 105/255, 4/255)
-  love.graphics.circle("fill", self.x, self.y, self.radius)
+  --love.graphics.circle("fill", self.x, self.y, self.radius)
 end
 
 --Return the Hole class

@@ -23,7 +23,7 @@ function MoleEntity:new(x, y, isAlive)
   --Time required to despawn the mole
   self.timeToDespawn = 2 + love.math.random() * (6 - 2)
   --Set the animation
-  self.animation = Animation(Assets.mole, 56, 46, 1)
+  self.animation = Animation(Assets.moleUp, 56, 46, 0.5)
 end
 
 --Drawing function
