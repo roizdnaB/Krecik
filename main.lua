@@ -134,9 +134,7 @@ function love.update(dt)
         moleSystem:updateEntity(m, currentPlayer, dt)
       end
       
-      for i, h in ipairs(currentLevel.holes) do
-        holeSystem:updateEntity(h, dt)
-      end
+      holeSystem:updateEntities(currentLevel.holes, dt)
       
       --Mouse click, updating score and healthpoins for plyer
       function love.mousepressed(x,y,button)
