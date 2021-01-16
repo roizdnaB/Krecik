@@ -27,6 +27,8 @@ end
 
 --Drawing function
 function MenuState:draw()
+  --Set background color
+  love.graphics.setBackgroundColor(0, 0, 0)
   --Draw the current menu
   for i, b in ipairs(self.menus) do
     if self.currentSection == b.section then

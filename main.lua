@@ -140,6 +140,12 @@ function love.update(dt)
       function love.mousepressed(x,y,button)
         playerSystem:killMole(currentPlayer, x, y, currentLevel.moles)
       end  
+    else
+      --Press mouse to go back to the main menu
+      function love.mousepressed()
+        --Restart the game
+        love.load()
+      end
     end
   end
 end
