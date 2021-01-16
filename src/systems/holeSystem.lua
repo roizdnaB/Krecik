@@ -4,50 +4,51 @@
 local HoleSystem = Object:extend()
 
 --Updating function
-function HoleSystem:updateEntity(entity, dt)
-
-  --If the hole is dynamic, move it
-  if entity.dynamic == true then
+function HoleSystem:updateEntities(entities, dt)
+  
+  for i, e in ipairs(entities) do
+    --If the hole is dynamic, move it
+    if e.dynamic == true then
     
-    --Get the width and height of the window
-    local windowWidth = love.graphics.getWidth()
-    local windowHeight = love.graphics.getHeight()
+      --Get the width and height of the window
+      local windowWidth = love.graphics.getWidth()
+      local windowHeight = love.graphics.getHeight()
     
-    if entity.direction == "up" then
-      entity.y = entity.y - entity.velocity * dt
+      if e.direction == "up" then
+        e.y = e.y - e.velocity * dt
     
-    elseif entity.direction == "right" then
-      entity.x = entity.x + entity.velocity * dt
+      elseif e.direction == "right" then
+        e.x = e.x + e.velocity * dt
       
-    elseif entity.direction == "down" then
-      entity.y = entity.y + entity.velocity * dt
+      elseif e.direction == "down" then
+        e.y = e.y + e.velocity * dt
     
-    elseif entity.direction == "left" then
-      entity.x = entity.x - entity.velocity * dt
-    end
+      elseif e.direction == "left" then
+        e.x = e.x - e.velocity * dt
+      end
     
-    --Collision for left/right
-    if entity.direction == "right" or entity.direction == "left" then
-      if entity.x < entity.radius then
-        entity.x = entity.radius
-        entity.velocity = -entity.velocity
-      elseif entity.x + entity.radius > windowWidth then
-        entity.x = windowWidth - entity.radius
-        entity.velocity = -entity.velocity
+      --Collision for left/right
+      if e.direction == "right" or e.direction == "left" then
+        if e.x < e.radius then
+          e.x = e.radius
+          e.velocity = -e.velocity
+        elseif e.x + e.radius > windowWidth then
+          e.x = windowWidth - e.radius
+          e.velocity = -e.velocity
+        end
+      end
+    
+      --Collision for up/down
+      if e.direction == "up" or e.direction == "down" then
+        if e.y < e.radius then
+          e.y = e.radius
+          e.velocity = -e.velocity
+        elseif e.y + e.radius > windowHeight then
+          e.y = windowHeight - e.radius
+          e.velocity = -e.velocity
+        end
       end
     end
-    
-    --Collision for up/down
-    if entity.direction == "up" or entity.direction == "down" then
-      if entity.y < entity.radius then
-        entity.y = entity.radius
-        entity.velocity = -entity.velocity
-      elseif entity.y + entity.radius > windowHeight then
-        entity.y = windowHeight - entity.radius
-        entity.velocity = -entity.velocity
-      end
-    end
-    
   end
 end
 
