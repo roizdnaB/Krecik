@@ -36,6 +36,12 @@ function PlayerEntity:drawGUI()
     love.graphics.setColor(0,0,0)
     love.graphics.print("YOU WIN",90,18)
     love.graphics.setColor(1,1,1)
+    
+    if Assets.isSoundPlaying == true then
+      Assets.youWin:play()
+      Assets.isSoundPlaying = false
+    end
+    
   --Else, print the player's info bar
   else
     love.graphics.draw(Assets.gameUI1,2,2, 0, 0.7, 0.3)
