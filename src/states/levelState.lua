@@ -43,6 +43,12 @@ function LevelState:draw()
     love.graphics.setColor(0,0,0)
     love.graphics.print("TIMES UP!", 495, 16)
     love.graphics.setColor(1,1,1)
+    
+    if Assets.isSoundPlaying == true then
+      Assets.gameOver:play()
+      Assets.isSoundPlaying = false
+    end
+    
   --Else, draw the timer
   else
     love.graphics.draw(Assets.gameUI1, 480, 2, 0, 0.3, 0.3)

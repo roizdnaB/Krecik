@@ -24,6 +24,12 @@ function PlayerEntity:drawGUI()
     love.graphics.setColor(0,0,0)
     love.graphics.print("GAME OVER",80,18)
     love.graphics.setColor(1,1,1)
+    
+    if Assets.isSoundPlaying == true then
+      Assets.gameOver:play()
+      Assets.isSoundPlaying = false
+    end
+  
   --If the player has 20 score, print the congratulation message
   elseif self.score >= 20 then
     love.graphics.draw(Assets.gameUI1,2,2, 0, 0.7, 0.3)

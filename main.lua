@@ -62,7 +62,7 @@ function love.load()
             HoleState(465, 465, true, "down", 250)}
   
   --Create the levels
-  level1 = LevelState(holes1, 2, Assets.grass1)
+  level1 = LevelState(holes1, 75, Assets.grass1)
   level2 = LevelState(holes2, 60, Assets.grass2)
   level3 = LevelState(holes3, 45, Assets.grass3)
   

@@ -18,5 +18,8 @@ assets.gameUI1 = love.graphics.newImage("assets/gameUI1.png")
 assets.heart = love.graphics.newImage("assets/heart.png")
 assets.timeUI = love.graphics.newImage("assets/timeUI.png")
 
+assets.isSoundPlaying = true
+assets.gameOver = love.audio.newSource("assets/gameOver.mp3", "static")
+
 --Return the list full of assets
 return assets
