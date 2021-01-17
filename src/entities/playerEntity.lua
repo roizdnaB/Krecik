@@ -34,11 +34,11 @@ function PlayerEntity:drawGUI()
   else
     love.graphics.draw(Assets.gameUI1,2,2, 0, 0.7, 0.3)
     love.graphics.setColor(0,0,0)
-    love.graphics.print("SCORE:  " .. self.score, 50, 18)
+    love.graphics.print("SCORE: " .. self.score, 50, 18)
     love.graphics.setColor(1,1,1)
-    love.graphics.draw(Assets.heart, 140, 20, 0, 2.5, 2.5)
+    love.graphics.draw(Assets.heart, 150, 20, 0, 2.5, 2.5)
     love.graphics.setColor(0,0,0)
-    love.graphics.print("x ".. self.healthPoints, 160, 18)
+    love.graphics.print("x ".. self.healthPoints, 170, 18)
     love.graphics.setColor(1,1,1)
   end
 end
