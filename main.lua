@@ -45,6 +45,7 @@ function love.load()
   
   --Create the menu
   menu = MenuState(Assets.menuBackground, Assets.moleMenu,Assets.font)
+  Assets.isSoundPlaying = true
   
   --Map the first level
   holes1 = {HoleState(133, 133), HoleState(299, 133), HoleState(465, 133), 

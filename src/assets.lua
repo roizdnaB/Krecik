@@ -20,6 +20,10 @@ assets.timeUI = love.graphics.newImage("assets/timeUI.png")
 
 assets.isSoundPlaying = true
 assets.gameOver = love.audio.newSource("assets/gameOver.mp3", "static")
+assets.gameOver:setVolume(0.3)
+
+assets.hit = love.audio.newSource("assets/hit.mp3", "static")
+assets.hit:setVolume(0.3)
 
 --Return the list full of assets
 return assets

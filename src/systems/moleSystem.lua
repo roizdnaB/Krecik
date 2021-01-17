@@ -3,6 +3,8 @@
 --Create a moleSystem system
 local MoleSystem = Object:extend()
 
+local Assets = require "src.assets"
+
 --Updating function
 function MoleSystem:updateEntity(entity, player, dt)
   --If the mole isn't alive, then decrease time required to spawn 
@@ -50,6 +52,7 @@ function MoleSystem:updateEntity(entity, player, dt)
     entity.wasKilled = false
     entity.timeToDespawn = 2 + love.math.random() * (6 - 2)
     player.healthPoints = player.healthPoints - 1
+    Assets.hit:play()
   end
 end
 

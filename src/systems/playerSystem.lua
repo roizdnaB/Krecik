@@ -3,6 +3,8 @@
 --Create a playerSystem system
 local PlayerSystem = Object:extend()
 
+local Assets = require "src.assets"
+
 --Updating function
 function PlayerSystem:updateEntity(entity, dt)
   
@@ -26,6 +28,7 @@ function PlayerSystem:killMole(entity, x, y, moles)
       --If the player clicked in the hole without the mole
       else
         entity.healthPoints = entity.healthPoints - 1
+        Assets.hit:play()
       end
     end
   end    
