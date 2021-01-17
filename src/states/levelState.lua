@@ -15,6 +15,7 @@ function LevelState:new(holes, time, background)
     self.holes = holes
     --A time for one level
     self.timeOfLevel = time
+    
     --Set an array of moles with the same coords as holes
     self.moles = {}
     for i=1, table.getn(self.holes) do
@@ -37,8 +38,11 @@ function LevelState:draw()
   
   --If the times up, draw the info about it
   if self.timeOfLevel <= 0 then
-    love.graphics.print("times up! Game Over", 405, 12)
-    love.graphics.rectangle("line", 400, 10, 180, 30)
+    
+    love.graphics.draw(Assets.gameUI1, 480, 2, 0, 0.3, 0.3)
+    love.graphics.setColor(0,0,0)
+    love.graphics.print("TIMES UP!", 495, 16)
+    love.graphics.setColor(1,1,1)
   --Else, draw the timer
   else
     love.graphics.draw(Assets.gameUI1, 480, 2, 0, 0.3, 0.3)
