@@ -70,7 +70,7 @@ function love.load()
   --Create the player
   player1 = PlayerEntity(10,0)
   player2 = PlayerEntity(5, 0)
-  player3 = PlayerEntity(99, 0)
+  player3 = PlayerEntity(3, 0)
   
   --Create the systems
   moleSystem = MoleSystem()
