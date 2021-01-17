@@ -40,8 +40,8 @@ function HoleSystem:updateEntities(entities, dt)
     
       --Collision for up/down
       if e.direction == "up" or e.direction == "down" then
-        if e.y < e.radius then
-          e.y = e.radius
+        if e.y < e.radius + 100 then
+          e.y = e.radius + 100
           e.velocity = -e.velocity
         elseif e.y + e.radius > windowHeight then
           e.y = windowHeight - e.radius
