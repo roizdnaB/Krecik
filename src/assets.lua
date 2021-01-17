@@ -16,6 +16,7 @@ assets.moleUp = love.graphics.newImage("assets/moleUp.png")
 assets.moleDown = love.graphics.newImage("assets/moleDown.png")
 assets.gameUI1 = love.graphics.newImage("assets/gameUI1.png")
 assets.heart = love.graphics.newImage("assets/heart.png")
+assets.timeUI = love.graphics.newImage("assets/timeUI.png")
 
 --Return the list full of assets
 return assets
