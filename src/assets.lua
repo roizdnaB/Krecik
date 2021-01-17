@@ -5,7 +5,9 @@ local assets = {}
 
 --Load all assets in the game
 assets.cursor = love.image.newImageData("assets/cursor_icon.png")
-assets.grass = love.graphics.newImage("assets/grass.png")
+assets.grass1 = love.graphics.newImage("assets/grass1.png")
+assets.grass2 = love.graphics.newImage("assets/grass2.png")
+assets.grass3 = love.graphics.newImage("assets/grass3.png")
 assets.menuBackground = love.graphics.newImage("assets/wheat.png")
 assets.moleMenu = love.graphics.newImage("assets/moleMenu.png")
 assets.moleUp = love.graphics.newImage("assets/moleUp.png")
