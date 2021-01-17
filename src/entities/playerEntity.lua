@@ -3,8 +3,12 @@
 --Create a player class
 local PlayerEntity = Object:extend()
 
+local Assets = nil
+
 --Constructor of the player class
 function PlayerEntity:new(healthPoints, score)
+  
+  Assets = require "src.assets"
   
   --Health points (the number of the possible misses)
   self.healthPoints = healthPoints
@@ -16,16 +20,26 @@ end
 function PlayerEntity:drawGUI()
   --If the player has no health, print the game over message
   if self.healthPoints <= 0 then
-    love.graphics.print("GAME OVER",10,12)
-    love.graphics.rectangle("line",10,10,200,30)
+    love.graphics.draw(Assets.gameUI1,2,2, 0, 0.7, 0.3)
+    love.graphics.setColor(0,0,0)
+    love.graphics.print("GAME OVER",80,18)
+    love.graphics.setColor(1,1,1)
   --If the player has 20 score, print the congratulation message
   elseif self.score >= 20 then
-    love.graphics.print("CONGRATULATION! YOU WIN",10,12)
-    love.graphics.rectangle("line",10,10,200,30)
+    love.graphics.draw(Assets.gameUI1,2,2, 0, 0.7, 0.3)
+    love.graphics.setColor(0,0,0)
+    love.graphics.print("YOU WIN",90,18)
+    love.graphics.setColor(1,1,1)
   --Else, print the player's info bar
-  else 
-    love.graphics.print("SCORE:  ".. self.score.."  HEALTH:".. self.healthPoints,10,12)
-    love.graphics.rectangle("line",10,10,200,30)
+  else
+    love.graphics.draw(Assets.gameUI1,2,2, 0, 0.7, 0.3)
+    love.graphics.setColor(0,0,0)
+    love.graphics.print("SCORE:  " .. self.score, 50, 18)
+    love.graphics.setColor(1,1,1)
+    love.graphics.draw(Assets.heart, 140, 20, 0, 2.5, 2.5)
+    love.graphics.setColor(0,0,0)
+    love.graphics.print("x ".. self.healthPoints, 160, 18)
+    love.graphics.setColor(1,1,1)
   end
 end
 
