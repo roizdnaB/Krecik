@@ -14,8 +14,8 @@ function MenuState:new(background,mole,font)
     --Array which is the map of the menu buttons (see helpers -> button)
     
     self.menus = 
-      {Button("START", 150, 150, 1, 1, 300, 50), Button("EXIT", 150, 220, 1, 2, 300, 50), 
-       Button("LEVEL 1", 150, 150, 2, 1, 300, 50), Button("LEVEL 2", 150, 220, 2, 2, 300, 50), Button("LEVEL 3", 150, 290, 2, 3, 300, 50), Button("BACK", 225, 360, 2, 4, 150, 50)}
+      {Button("START", 150, 150, 1, 1, 300, 50,50), Button("EXIT", 150, 220, 1, 2, 300, 50,30), 
+       Button("LEVEL 1", 150, 150, 2, 1, 300, 50,50), Button("LEVEL 2", 150, 220, 2, 2, 300, 50,50), Button("LEVEL 3", 150, 290, 2, 3, 300, 50,50), Button("BACK", 225, 360, 2, 4, 150, 50,35)}
     
     --Set the current section and item
     self.currentSection = 1
@@ -40,6 +40,11 @@ function MenuState:draw()
         end
     end
     
+  for i, b in ipairs(self.menus) do
+    if self.currentSection == b.section then
+      b:draw()
+    end
+  end
     fontB = love.graphics.newFont("assets/font_PS.ttf",50)
     
     love.graphics.setFont(fontB)
@@ -48,11 +53,7 @@ function MenuState:draw()
     love.graphics.setFont(self.font)
     love.graphics.draw(self.mole,300,350)
   --Draw the current menu
-  for i, b in ipairs(self.menus) do
-    if self.currentSection == b.section then
-      b:draw()
-    end
-  end
+  
 end
 
 --Updating function
