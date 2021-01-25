@@ -31,7 +31,7 @@ function PlayerEntity:drawGUI()
     end
   
   --If the player has 20 score, print the congratulation message
-  elseif self.score >= 20 then
+  elseif self.score >= 15 then
     love.graphics.draw(Assets.gameUI1,2,2, 0, 0.7, 0.3)
     love.graphics.setColor(0,0,0)
     love.graphics.print("YOU WIN",90,18)

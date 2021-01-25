@@ -21,7 +21,7 @@ end
 function LevelSystem:isGameRunning(entity, player)
   if entity.timeOfLevel > 0 and 
   player.healthPoints > 0 and
-  player.score < 20 then
+  player.score < 15 then
     return true
   else
     return false
