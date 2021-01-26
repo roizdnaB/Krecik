@@ -2,6 +2,7 @@
 
 --Load libraries
 Object = require "lib.classic"  --Classic lib for simulating OOP
+local cute = require "lib.cute" --Testing lib
 
 --Init empty list of assets, entities, states and systems
 local Assets = nil
@@ -25,8 +26,13 @@ local level3 = nil
 
 local currentPlayer = nil
 
+local cute_args = nil
+
 --Main loading function of the game
-function love.load()
+function love.load(args)
+  --If flag --cute occurs, call the cute lib
+  cute_args = args
+  cute.go(cute_args)
   
   --Load assets
   Assets = require "src.assets"
@@ -106,6 +112,8 @@ function love.draw()
       end
     end
   end
+  --Draw the GUI of testing lib
+  cute.draw(love.graphics)
 end
 
 --Main updating function of the game
@@ -145,8 +153,13 @@ function love.update(dt)
       --Press mouse to go back to the main menu
       function love.mousepressed()
         --Restart the game
-        love.load()
+        love.load(cute_args)
       end
     end
   end
+end
+
+--For testing lib controls
+function love.keypressed(key)
+  cute.keypressed(key)
 end
